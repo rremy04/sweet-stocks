@@ -5,4 +5,4 @@ A full-stack inventory visibility platform that helps customers discover product
 Prototype / portfolio project.
 
 ## Note
-This project is not affiliated with BonBon. It is an independent concept created to explore a potential customer experience solution.
+This project is an independent concept created to explore a potential customer experience solution.
