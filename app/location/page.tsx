@@ -44,7 +44,7 @@ export default function LocationPage() {
         );
 
   return (
-    <main className="min-h-screen bg-[#FDE5DE]">
+    <main className="min-h-screen bg-background">
       {/* Header */}
       <section className="px-8 py-10">
         <h1 className="text-3xl font-bold text-stone-800">
@@ -82,7 +82,7 @@ export default function LocationPage() {
               className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               {/* Store Image Placeholder */}
-              <div className="flex h-40 items-center justify-center bg-[#F8D4CC]">
+              <div className="flex h-40 items-center justify-center bg-background">
                 <span className="text-5xl">📍</span>
               </div>
 
@@ -105,7 +105,7 @@ export default function LocationPage() {
                     {store.flavors.map((flavor) => (
                       <span
                         key={flavor}
-                        className="rounded-full bg-[#FDE5DE] px-3 py-1 text-xs text-stone-700"
+                        className="rounded-full bg-background px-3 py-1 text-xs text-stone-700"
                       >
                         {flavor}
                       </span>

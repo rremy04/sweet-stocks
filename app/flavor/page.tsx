@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function FlavorPage() {
   return (
-    <main className="min-h-screen bg-[#FDE5DE]">
+    <main className="min-h-screen bg-background">
       <section className="px-8 py-10">
         <h1 className="text-3xl font-bold text-stone-800">
           Search by Flavor

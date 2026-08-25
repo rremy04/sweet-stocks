@@ -3,17 +3,18 @@
  * Homepage — route "/"
  * Renders nav, hero headline, and two search-option cards
  * (by flavor / by location) that will link to /flavor and /location.
- * TODO: extract Navbar and SearchOption into components/, and
- * move Navbar into layout.tsx so it's shared across all pages.
  */
 import HomeHero from "./HomeHero";
+import CandyRain from "./CandyRain";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#FDE5DE]">
-      {/* Navbar Section */}
-      {/* Hero Section */}
-      <HomeHero />
+    <main className="min-h-screen bg-background">
+      <CandyRain />
+      <div className="relative z-10">
+        <HomeHero />
+      </div>
+      
     </main>
   );
 }
