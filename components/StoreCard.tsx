@@ -1,10 +1,12 @@
 /* Store Location Cards in */
 // import Link from "next/Link";
+import Image from "next/image"
 
 
 type Store = {
     name: string;
     location: string;
+    image: string;
     flavors: string[]
 
 }
@@ -18,8 +20,10 @@ export default function StoreCard({store}: StoreCardProps) {
         // I'll need the Link Later on when I'm 
         <div className="overflow-hidden rounded-2xl border border-stone-600 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
             {/* Store Image Placeholder */}
-            <div className="flex h-40 items-center justify-center bg-background">
-                <span className="text-5xl">📍</span>
+            <div className="flex relative h-40 items-center justify-center bg-background">
+                {/* <span className="text-5xl">📍</span> */}
+                <Image src={store.image} alt={store.image} fill className="object-cover" />
+
             </div>
 
             {/* Store Information */}
