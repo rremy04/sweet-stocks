@@ -1,5 +1,5 @@
 /* Store Location Cards in */
-// import Link from "next/Link";
+import Link from "next/Link";
 import Image from "next/image"
 
 
@@ -58,6 +58,7 @@ export default function StoreCard({store}: StoreCardProps) {
                 <button className="mt-5 w-full rounded-lg bg-stone-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-rose-500">
                   View Store
                 </button>
+                {/* <Link className="mt-5 w-full rounded-lg bg-stone-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-rose-500">View Store</Link> */}
               </div>
             </div>
 
