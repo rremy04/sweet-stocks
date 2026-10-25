@@ -1,21 +1,57 @@
+import GumballMachine, { type Gumball } from "@/components/GumballMachine";
+
 /*
 
 About Me
 On the URL - yoursite.com/about
 
 */
-const highlights = [
+// Order matters: the globe places balls by position, so labelled balls sit at
+// slots 0, 2, 5 and 7 to keep them from touching each other.
+const balls: Gumball[] = [
   {
     title: "The problem",
     body: "Customers don't know whether a trip to the store is worth it, because inventory changes constantly. Finding out your favorite candy is sold out after you've already made the drive is frustrating.",
+    color: "bg-rose-300",
+  },
+  {
+    title: "Coming soon",
+    body: "Nothing in this one yet.",
+    color: "bg-purple-300",
+    blank: true,
   },
   {
     title: "The idea",
     body: "Let customers see what's currently in stock at each location, with clear Available, Running Low and Sold Out signals, and get notified when something is restocked.",
+    color: "bg-yellow-300",
   },
   {
-    title: "The upside for the business",
+    title: "Coming soon",
+    body: "Nothing in this one yet.",
+    color: "bg-orange-300",
+    blank: true,
+  },
+  {
+    title: "Coming soon",
+    body: "Nothing in this one yet.",
+    color: "bg-pink-300",
+    blank: true,
+  },
+  {
+    title: "The upside",
     body: "The same data shows which days are busiest and when sales are slow, so a store can bring out a featured flavor on a rotating schedule, such as every two weeks, to drive traffic.",
+    color: "bg-sky-300",
+  },
+  {
+    title: "Coming soon",
+    body: "Nothing in this one yet.",
+    color: "bg-teal-300",
+    blank: true,
+  },
+  {
+    title: "SweetStocks",
+    body: "A full-stack inventory visibility platform that helps customers discover product availability and receive restock notifications. A prototype / portfolio project exploring how specialty retailers could improve customer experiences through real-time inventory visibility.",
+    color: "bg-green-300",
   },
 ];
 
@@ -30,38 +66,8 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="px-8">
-        <div className="max-w-3xl rounded-2xl border border-stone-300 bg-white p-6 shadow-sm">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-xl font-semibold text-brand-grape">
-              SweetStocks
-            </h2>
-            <span className="rounded-full bg-brand-pink px-3 py-1 text-xs font-medium text-brand-grape">
-              Prototype / portfolio project
-            </span>
-          </div>
-
-          <p className="mt-3 text-brand-grape/90">
-            A full-stack inventory visibility platform that helps customers
-            discover product availability and receive restock notifications. It
-            explores how specialty retailers could improve customer experiences
-            through real-time inventory visibility.
-          </p>
-        </div>
-      </section>
-
       <section className="px-8 py-8">
-        <div className="grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-3">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-stone-300 bg-white p-5 shadow-sm"
-            >
-              <h3 className="font-semibold text-brand-grape">{item.title}</h3>
-              <p className="mt-2 text-sm text-brand-grape/80">{item.body}</p>
-            </div>
-          ))}
-        </div>
+        <GumballMachine balls={balls} />
 
         <p className="mt-8 max-w-3xl text-sm text-brand-grape/70">
           Note: this project is an independent concept created to explore a

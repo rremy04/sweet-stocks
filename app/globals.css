@@ -43,3 +43,23 @@
   animation-iteration-count: infinite;
 }
 
+
+
+/* 
+  Gumballs in the About page machine gently jiggle
+ */
+@keyframes wiggle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(2px, -3px) rotate(4deg); }
+  75% { transform: translate(-2px, 2px) rotate(-4deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wiggle {
+    animation: none;
+  }
+}
