@@ -1,15 +1,7 @@
 /* Store Location Cards in */
-import Link from "next/Link";
+import Link from "next/link";
 import Image from "next/image"
-
-
-type Store = {
-    name: string;
-    location: string;
-    image: string;
-    flavors: string[]
-
-}
+import type { Store } from "@/lib/stores";
 
 type StoreCardProps = {
     store: Store
@@ -53,12 +45,12 @@ export default function StoreCard({store}: StoreCardProps) {
                   </div>
                 </div>
 
-                {/* Once uncommented, you'd replace the <button> with a <Link> the same way ChoiceCard does it, passing href={/* derived path */}.
-                {/* It will need to be a dynamic route folder structure first, */}
-                <button className="mt-5 w-full rounded-lg bg-stone-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-rose-500">
+                <Link
+                  href={`/location/${store.slug}`}
+                  className="mt-5 block w-full rounded-lg bg-stone-800 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:bg-rose-500"
+                >
                   View Store
-                </button>
-                {/* <Link className="mt-5 w-full rounded-lg bg-stone-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-rose-500">View Store</Link> */}
+                </Link>
               </div>
             </div>
 

@@ -9,33 +9,7 @@ On the URL - yoursite.com/location
 
 import { useState } from "react";
 import StoreCard from "@/components/StoreCard";
-
-const stores = [
-  {
-    name: "Columbia",
-    location: "Columbia, MD",
-    image: "/images/columbia.jpg",
-    flavors: ["Strawberry", "Lemon", "Raspberry", "Blueberry"],
-  },
-  {
-    name: "Bethesda",
-    location: "Bethesda, MD",
-    image: "/images/bethesda.jpg",
-    flavors: ["Strawberry", "Blueberry", "Mango"],
-  },
-  {
-    name: "Tysons",
-    location: "Tysons, VA",
-    image: "/images/tysons.jpg",
-    flavors: ["Lemon", "Raspberry", "Mango", "Orange"],
-  },
-  {
-    name: "Baltimore",
-    location: "Baltimore, MD",
-    image: "/images/baltimore.jpg",
-    flavors: ["Strawberry", "Lemon", "Blueberry"],
-  },
-];
+import { stores } from "@/lib/stores";
 
 const filters = ["All Stores", "Maryland", "Virginia"];
 

@@ -1,17 +1,18 @@
 // shown on every page
-
+import Link from "next/link";
 export default function Navbar() {
     return (
         <nav className="flex items-center bg-brand-pink justify-between px-8 py-6">
-            <h1 className="text-2xl text-bg-brand-grape font-bold">SweetStocks</h1>
-
+            <Link href="/" className="text-2xl text-brand-grape font-bold">
+                SweetStocks
+            </Link>
             <div className="flex gap-6">
-            <a href="#" className="text-bg-brand-grape hover:underline">
+            <Link href="/location" className="text-bg-brand-grape hover:underline">
                 Stores
-            </a>
-            <a href="#" className="text-bg-brand-grape hover:underline">
+            </Link>
+            <Link href="/about" className="text-bg-brand-grape hover:underline">
                 About
-            </a>
+            </Link>
             </div>
         </nav>
     );
