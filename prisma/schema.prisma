@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum StockStatus {
+  AVAILABLE
+  LOW
+  SOLD_OUT
+}
+
+model Store {
+  id        Int         @id @default(autoincrement())
+  slug      String      @unique
+  name      String
+  city      String
+  state     String
+  imageUrl  String
+  inventory Inventory[]
+}
+
+model Flavor {
+  id      Int     @id @default(autoincrement())
+  name    String  @unique
+  candies Candy[]
+}
+
+model Candy {
+  id         Int         @id @default(autoincrement())
+  slug       String      @unique
+  name       String
+  priceCents Int
+  flavorId   Int
+  flavor     Flavor      @relation(fields: [flavorId], references: [id])
+  inventory  Inventory[]
+
+  @@index([flavorId])
+}
+
+// One row per store + candy pair: the current stock status.
+model Inventory {
+  storeId   Int
+  candyId   Int
+  status    StockStatus @default(AVAILABLE)
+  updatedAt DateTime    @updatedAt
+  store     Store       @relation(fields: [storeId], references: [id])
+  candy     Candy       @relation(fields: [candyId], references: [id])
+
+  @@id([storeId, candyId])
+  // Flavor search asks "which stores have this candy?", so index by candy too
+  @@index([candyId])
+}
