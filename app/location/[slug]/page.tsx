@@ -7,13 +7,8 @@ On the URL - yoursite.com/location/columbia
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getStore, stores, type Stock } from "@/lib/stores";
-
-const stockStyles: Record<Stock, { label: string; badge: string; dot: string }> = {
-  available: { label: "Available", badge: "bg-green-100 text-green-800", dot: "bg-green-500" },
-  low: { label: "Running Low", badge: "bg-amber-100 text-amber-800", dot: "bg-amber-500" },
-  soldOut: { label: "Sold Out", badge: "bg-red-100 text-red-800", dot: "bg-red-500" },
-};
+import { getStore, stores } from "@/lib/stores";
+import { stockStyles } from "@/lib/stockStyles";
 
 export function generateStaticParams() {
   return stores.map((store) => ({ slug: store.slug }));
