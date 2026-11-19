@@ -32,7 +32,7 @@ export default function LocationPage() {
         </h1>
 
         <p className="mt-2 text-stone-600">
-          See what flavors are currently available at each location.
+          Pick a store to see what&apos;s on the shelves.
         </p>
       </section>
 

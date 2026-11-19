@@ -5,6 +5,7 @@ export type Stock = "available" | "low" | "soldOut";
 export type Candy = {
   name: string;
   price: number;
+  flavor: string;
   emoji: string; // placeholder until we have real candy photos
   tint: string; // tailwind bg class for the tile
 };
@@ -20,17 +21,17 @@ export type Store = {
   candies: StockedCandy[];
 };
 
-const mega = { name: "Mega Cola Rambos", price: 4.95, emoji: "🥤", tint: "bg-stone-200" };
-const rolls = { name: "Strawberry Rolls", price: 4.95, emoji: "🍓", tint: "bg-rose-100" };
-const skull = { name: "Danish Skull", price: 4.95, emoji: "💀", tint: "bg-pink-100" };
-const pineapple = { name: "Pineapple Rings", price: 4.95, emoji: "🍍", tint: "bg-yellow-100" };
-const sharks = { name: "Blue Sharks", price: 4.95, emoji: "🦈", tint: "bg-sky-100" };
-const oranges = { name: "Orange Rings", price: 4.95, emoji: "🍊", tint: "bg-orange-100" };
-const mallows = { name: "Vanilla Mallows", price: 4.95, emoji: "🍥", tint: "bg-purple-100" };
-const lemons = { name: "Sour Lemon Drops", price: 4.95, emoji: "🍋", tint: "bg-amber-100" };
-const berries = { name: "Blueberry Bites", price: 4.95, emoji: "🫐", tint: "bg-indigo-100" };
-const mango = { name: "Mango Gummies", price: 4.95, emoji: "🥭", tint: "bg-orange-100" };
-const raspberry = { name: "Raspberry Twists", price: 4.95, emoji: "🍇", tint: "bg-fuchsia-100" };
+const mega = { name: "Mega Cola Rambos", price: 4.95, flavor: "Cola", emoji: "🥤", tint: "bg-stone-200" };
+const rolls = { name: "Strawberry Rolls", price: 4.95, flavor: "Strawberry", emoji: "🍓", tint: "bg-rose-100" };
+const skull = { name: "Danish Skull", price: 4.95, flavor: "Strawberry", emoji: "💀", tint: "bg-pink-100" };
+const pineapple = { name: "Pineapple Rings", price: 4.95, flavor: "Pineapple", emoji: "🍍", tint: "bg-yellow-100" };
+const sharks = { name: "Blue Sharks", price: 4.95, flavor: "Blueberry", emoji: "🦈", tint: "bg-sky-100" };
+const oranges = { name: "Orange Rings", price: 4.95, flavor: "Orange", emoji: "🍊", tint: "bg-orange-100" };
+const mallows = { name: "Vanilla Mallows", price: 4.95, flavor: "Vanilla", emoji: "🍥", tint: "bg-purple-100" };
+const lemons = { name: "Sour Lemon Drops", price: 4.95, flavor: "Lemon", emoji: "🍋", tint: "bg-amber-100" };
+const berries = { name: "Blueberry Bites", price: 4.95, flavor: "Blueberry", emoji: "🫐", tint: "bg-indigo-100" };
+const mango = { name: "Mango Gummies", price: 4.95, flavor: "Mango", emoji: "🥭", tint: "bg-orange-100" };
+const raspberry = { name: "Raspberry Twists", price: 4.95, flavor: "Raspberry", emoji: "🍇", tint: "bg-fuchsia-100" };
 
 // Same candy, different stock level depending on the store
 const at = (candy: Candy, stock: Stock): StockedCandy => ({ ...candy, stock });
@@ -73,3 +74,27 @@ export const stores: Store[] = [
 export function getStore(slug: string) {
   return stores.find((store) => store.slug === slug);
 }
+
+export type CandyAvailability = {
+  candy: Candy;
+  stores: { slug: string; name: string; stock: Stock }[];
+};
+
+// Flips the store -> candies shape into candy -> stores, for the flavor page
+export function getCandyAvailability(): CandyAvailability[] {
+  const byName = new Map<string, CandyAvailability>();
+
+  for (const store of stores) {
+    for (const { stock, ...candy } of store.candies) {
+      const entry = byName.get(candy.name) ?? { candy, stores: [] };
+      entry.stores.push({ slug: store.slug, name: store.name, stock });
+      byName.set(candy.name, entry);
+    }
+  }
+
+  return [...byName.values()];
+}
+
+export const allFlavors = [
+  ...new Set(stores.flatMap((store) => store.candies.map((c) => c.flavor))),
+].sort();

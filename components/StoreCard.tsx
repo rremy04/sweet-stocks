@@ -28,23 +28,6 @@ export default function StoreCard({store}: StoreCardProps) {
                   {store.location}
                 </p>
 
-                <div className="mt-5">
-                  <p className="text-sm font-medium text-stone-700">
-                    Available flavors
-                  </p>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {store.flavors.map((flavor) => (
-                      <span
-                        key={flavor}
-                        className="rounded-full bg-background px-3 py-1 text-xs text-stone-700"
-                      >
-                        {flavor}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
                 <Link
                   href={`/location/${store.slug}`}
                   className="mt-5 block w-full rounded-lg bg-stone-800 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:bg-rose-500"
